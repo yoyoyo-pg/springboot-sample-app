@@ -1,0 +1,39 @@
+plugins {
+    // Javaプラグイン: Javaプロジェクトのコンパイル、パッケージングなどを管理
+    id 'java'
+    // Spring Bootプラグイン: Spring Bootアプリケーションのビルドと実行を支援
+    id 'org.springframework.boot' version '3.1.5'
+    // Spring Dependency Managementプラグイン: Spring Bootの依存関係バージョンを自動管理
+    id 'io.spring.dependency-management' version '1.1.4'
+}
+
+// プロジェクトのグループID（通常、パッケージ名）
+group = 'com.example'
+// プロジェクトのバージョン
+version = '0.0.1-SNAPSHOT'
+
+// Java設定ブロック
+java {
+    // Javaのソース互換性バージョン（Java 17を使用）
+    sourceCompatibility = '17'
+}
+
+// リポジトリの設定（Maven Centralから依存関係をダウンロード）
+repositories {
+    mavenCentral()
+}
+
+// 依存関係の設定
+dependencies {
+    // Spring Boot Web Starter: Webアプリケーション開発に必要な依存関係（Spring MVC, 組み込みTomcatなど）
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    // Spring Boot Thymeleaf Starter: Thymeleafテンプレートエンジンを使用するための依存関係
+    implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
+    // Spring Boot Test Starter: テストに必要な依存関係（JUnit, Spring Testなど）
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+}
+
+// テストタスクの設定（JUnit Platformを使用）
+test {
+    useJUnitPlatform()
+}

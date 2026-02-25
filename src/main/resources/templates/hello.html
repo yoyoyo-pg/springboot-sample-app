@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<!-- Thymeleafテンプレートの宣言: xmlns:th属性でThymeleafの名前空間を定義 -->
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <!-- ページのタイトル設定 -->
+    <title>Hello World Page</title>
+    <!-- 必要に応じてCSSやJavaScriptを追加可能 -->
+</head>
+<body>
+    <!-- メインの見出し: th:text属性でModelから渡されたメッセージを表示 -->
+    <h1 th:text="${message}">Default Hello Message</h1>
+
+    <!-- 追加のコンテンツ例: 現在の日時を表示（Thymeleafのユーティリティを使用） -->
+    <p>現在の日時: <span th:text="${#dates.format(#dates.createNow(), 'yyyy-MM-dd HH:mm:ss')}">2023-01-01 00:00:00</span></p>
+
+    <!-- シンプルな説明文 -->
+    <p>これはSpring BootとThymeleafを使用したHello Worldアプリケーションです。</p>
+</body>
+</html>
