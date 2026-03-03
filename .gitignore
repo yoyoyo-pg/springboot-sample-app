@@ -36,3 +36,15 @@ application-prod.properties
 # Logs
 logs/
 *.log
+
+# ========================================
+# Infra (CDK) specific
+# ========================================
+*.js
+!jest.config.js
+*.d.ts
+node_modules
+
+# CDK asset staging directory
+.cdk.staging
+cdk.out
