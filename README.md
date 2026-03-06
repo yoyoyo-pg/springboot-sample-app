@@ -333,5 +333,34 @@ docker build -t springboot-sample-app .
 
 ```
 
+## Infrastructure (AWS CDK)
+
+このリポジトリには `infra/` ディレクトリが含まれ、AWS CDK を使って以下のリソースを構築することができます。
+
+- Amazon ECR リポジトリ (`springboot-sample-app`) - Docker イメージ用
+- AWS App Runner サービス - ECR からコンテナを自動デプロイ
+- CodeBuild プロジェクト - ソースコードのビルドおよび ECR へのプッシュ
+- CodePipeline パイプライン - GitHub からソースを取得し、CodeBuild を実行
+
+### セットアップとデプロイ
+
+1. `cd infra` でディレクトリを移動。
+2. 依存関係をインストール (`npm install`) と TypeScript のコンパイル (`npm run build`)。
+3. AWS CLI の認証情報が有効な環境で `cdk deploy` を実行。
+   - スタック名は `InfraStack`。
+   - デプロイ時に CodePipeline や App Runner などが作成されます。
+4. CodePipeline のソースには GitHub の `main` ブランチが使用されます。
+   - 初回は GitHub OAuth トークンを Secrets Manager に保存し、`infra-stack.ts` の `github-token` シークレット名を指定してください。
+   -（CodeStar Connections を利用する場合は設定を変更してください）
+
+### その他
+
+* スタック削除時は `ecr.Repository` に `RemovalPolicy.DESTROY` が設定されているため、構築されたリポジトリも削除されます。
+* App Runner のエンドポイント URL はスタック出力として表示されます。
+
+```
+
+```
+
 ```
 ````
